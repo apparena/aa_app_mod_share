@@ -1,15 +1,13 @@
 # Appalizr.com Module: Share Buttons
 -------------
 
-[TOC]
-
 ## Information
 * Github: [Repository](https://github.com/apparena/aa_app_mod_share)
 * Docs:   [Appalizr.com](http://www.appalizr.com/docs.html)
 * This is a module of the [aa_app_template](https://github.com/apparena/aa_app_template)
 
 ## Module job
-Creates an share button with a bubble to show a list with buttons to share the current site or action with a social
+> Creates an share button with a bubble to show a list with buttons to share the current site or action with a social
 network. If only one social media chanel is activated in the config value "share_social_networks" (App-Manager config value) config, this chanel will be called directly
 on a click, without open a additional bubble.
 
@@ -24,7 +22,7 @@ on a click, without open a additional bubble.
 ## Methods
 
 ### render(options, callback)
-Defines all button settings, load the needed templates and start a callback function. With the callback, you can add
+> Defines all button settings, load the needed templates and start a callback function. With the callback, you can add
 the button to the place where you want to show it.
 
 #### Params
@@ -42,7 +40,7 @@ the button to the place where you want to show it.
 - - -
 
 ### getButton(name)
-Returns the renderd button HTML, to put them into the DOM. Over the parameter, you can change the button value text.
+> Returns the renderd button HTML, to put them into the DOM. Over the parameter, you can change the button value text.
 This is not required, but when you use the some button on different places, you can change the button texts with this param.
 
 #### Params
