@@ -1,0 +1,9 @@
+<ul class="dropdown-menu">
+    <% if(_.c('share_social_networks').indexOf('fb') !== -1){ %>
+    <li><a href="#" class="fbshare"><i class="icon-facebook-sign"></i> <%= _.t('Facebook') %></a></li>
+    <% } if(_.c('share_social_networks').indexOf('twitter') !== -1){ %>
+    <li><a href="#" class="twshare"><i class="icon-twitter-sign"></i> <%= _.t('Twitter') %></a></li>
+    <% } if(_.c('share_social_networks').indexOf('gplus') !== -1){ %>
+    <li><a href="#" class="gpshare"><i class="icon-google-plus-sign"></i> <%= _.t('Google') %></a></li>
+    <% } %>
+</ul>

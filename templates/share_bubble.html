@@ -1,0 +1,15 @@
+<div class="btn-group-vertical">
+    <% if(_.c('share_social_networks').indexOf('fb') !== -1){ %>
+    <button type="button" class="btn btn-default fbshare">
+        <i class="icon-facebook-sign"></i> <%= _.t('Facebook') %>
+    </button>
+    <% } if(_.c('share_social_networks').indexOf('twitter') !== -1){ %>
+    <button type="button" class="btn btn-default twshare" data-lang="<%- _.t('share_lang') %>" data-url="<%- _.aa.instance.share_url %>" data-text="<%- _.c('general_title') %>-<%- _.c('general_desc') %>" data-count="none" data-hashtag="<%= _.t('share_hashtag') %>">
+        <i class="icon-twitter-sign"></i> <%= _.t('Twitter') %>
+    </button>
+    <% } if(_.c('share_social_networks').indexOf('gplus') !== -1){ %>
+    <button type="button" class="btn btn-default gpshare" data-lang="<%- _.t('share_lang') %>" data-url="<%- _.aa.instance.share_url %>" data-text="<%- _.c('general_title') %>-<%- _.c('general_desc') %>">
+        <i class="icon-google-plus-sign"></i> <%= _.t('Google') %>
+    </button>
+    <% } %>
+</div>
