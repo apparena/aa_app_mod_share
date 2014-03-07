@@ -1,5 +1,4 @@
 # Appalizr.com Module: Share Buttons
--------------
 
 ## Information
 * Github: [Repository](https://github.com/apparena/aa_app_mod_share)
@@ -30,8 +29,8 @@ the button to the place where you want to show it.
 | ------ |----- | ----------- |
 | options | Object | Button settings as JSON (btn_name or name, placement, section) |
 |  |  | &bull; btn_name or name - *Button value text (Name)* |
-|  |  | &bull; placement - *Bubble placement for content buttons (***top**,* right, buttom, left)* |
-|  |  | &bull; section - *button placement, to load the right templates (navigation or ***button** *)* |
+|  |  | &bull; placement - *Bubble placement for content buttons (* **top**,* right, buttom, left)* |
+|  |  | &bull; section - *button placement, to load the right templates (navigation or * **button** *)* |
 | callback | Function | To add the button to DOM or something else |
 
 #### Return
