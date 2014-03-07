@@ -71,9 +71,6 @@ define([
                     if (!_.isUndefined(options.placement) === false) {
                         this.placement = options.placement;
                     }
-                    if (_.isUndefined(options.placement) === false) {
-                        this.placement = options.placement;
-                    }
                     if (_.isUndefined(options.section) === false) {
                         if (options.section === 'navigation') {
                             this.section = 'navigation';
