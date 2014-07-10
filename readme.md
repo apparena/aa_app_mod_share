@@ -1,8 +1,6 @@
 # Appalizr.com Module: Share Buttons
-
-## Information
-* Github: [Repository](https://github.com/apparena/aa_app_mod_share)
-* Docs:   [Appalizr.com](http://www.appalizr.com/docs.html)
+* Github: https://github.com/apparena/aa_app_mod_share
+* Docs:   http://www.appalizr.com/index.php/share.html
 * This is a module of the [aa_app_template](https://github.com/apparena/aa_app_template)
 
 ## Module job
