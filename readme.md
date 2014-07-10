@@ -6,9 +6,7 @@
 * This is a module of the [aa_app_template](https://github.com/apparena/aa_app_template)
 
 ## Module job
-> Creates an share button with a bubble to show a list with buttons to share the current site or action with a social
-network. If only one social media chanel is activated in the config value "share_social_networks" (App-Manager config value) config, this chanel will be called directly
-on a click, without open a additional bubble.
+Creates a share button with a bubble to show a list with additional buttons to share the current site or action in a social network. If only one social media chanel is activated in the config value "share_social_networks" (App-Manager config value), this chanel will be called directly on a click, without open a additional bubble. Sounds confusing? Ahh no it's very easy, try the demo with the app template ;-)
 
 ## Load module with require
 `modules/aa_app_mod_share/js/views/GenerateShareButtonView`
@@ -28,9 +26,9 @@ the button to the place where you want to show it.
 | Param | Type | Description |
 | ------ |----- | ----------- |
 | options | Object | Button settings as JSON (btn_name or name, placement, section) |
-|  |  | &bull; btn_name or name - *Button value text (Name)* |
-|  |  | &bull; placement - *Bubble placement for content buttons (* **top**, *right, buttom, left)* |
-|  |  | &bull; section - *button placement, to load the right templates (navigation or* **button** *)* |
+| &nbsp; | &nbsp; | &bull; btn_name or name - *Button value text (Name)* |
+| &nbsp; | &nbsp; | &bull; placement - *Bubble placement for content buttons (* **top**, *right, buttom, left)* |
+| &nbsp; | &nbsp; | &bull; section - *button placement, to load the right templates (navigation or* **button** *)* |
 | callback | Function | To add the button to DOM or something else |
 
 #### Return
@@ -71,3 +69,16 @@ shareBtnContent.render({section: 'button', name: 'Share Button', placement: 'top
     $('.content-wrapper').html(shareBtnContent.getButton());
 });
 ```
+
+#### App-Manager config values
+| config | default | description |
+|--------|--------|--------|
+| share_image | empty | image value with src selection to show a share image on google stream or facebook open graph posts or share messages |
+| general_title | empty | Share title |
+| general_desc | empty | Share description |
+| share_social_networks | ["fb","twitter","gplus"] | share chanel selection to show selected share buttons |
+
+#### App-Manager locale values
+| locale | value example |
+|--------|--------|
+| share | [DE] Teilen, [EN] Share |

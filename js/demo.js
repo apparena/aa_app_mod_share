@@ -19,7 +19,7 @@ define([
         });
         // generate a new button in the content area, with name changed to 'Share Button' and a top bubble placement
         shareBtnContent.render({section: 'button', name: 'Share Button', placement: 'top'}, function () {
-            $('.content-wrapper').html(shareBtnContent.getButton());
+            $('.content-wrapper').prepend(shareBtnContent.getButton());
         });
     };
 });

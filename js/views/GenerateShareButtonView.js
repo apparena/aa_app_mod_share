@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!modules/aa_app_mod_share/templates/buttons/share.html',
-    'text!modules/aa_app_mod_share/templates/share_bubble.html'
-], function (View, $, _, Backbone, ShareButtonTemplate, ShareBubbleTemplate) {
+    'text!modules/aa_app_mod_share/templates/share_bubble.html',
+    'modules/aa_app_mod_share/js/models/ShareInfosModel'
+], function (View, $, _, Backbone, ShareButtonTemplate, ShareBubbleTemplate, ShareInfoModel) {
     'use strict';
 
     return function () {
@@ -22,13 +23,6 @@ define([
 
             section: 'button',
 
-            share_infos: {
-                image: _.c('share_image'),
-                title: _.c('general_title'),
-                desc:  _.c('general_desc'),
-                url:   _.aa.instance.share_url
-            },
-
             events: {
                 'click .share-btn': 'showOptions',
                 'click .fbshare':   'fbShare',
@@ -37,21 +31,13 @@ define([
             },
 
             initialize: function () {
-                _.bindAll(this, 'render', 'getButton', 'showOptions', 'fbShare', 'gpShare', 'twShare');
+                _.bindAll(this, 'render', 'getButton', 'showOptions', 'fbShare', 'gpShare', 'twShare', 'shrinkUrl');
 
-                var that = this;
+                this.shareInfos = ShareInfoModel().init({init: true});
+                this.listenTo(this.shareInfos, 'change:url', this.shrinkUrl);
+                this.shrinkUrl();
+
                 this.networks = _.c('share_social_networks').split(',');
-
-                // generate a bit.ly short url to shrink share message
-                this.ajax({
-                    module:   'aa_app_mod_share',
-                    action:   'getShorturl',
-                    obj_data: {
-                        url: _.aa.instance.share_url
-                    }
-                }, false, function (resp) {
-                    that.share_infos.short_url = resp.data.message;
-                });
 
                 return this;
             },
@@ -71,6 +57,9 @@ define([
                     if (!_.isUndefined(options.placement) === false) {
                         this.placement = options.placement;
                     }
+                    if (_.isUndefined(options.placement) === false) {
+                        this.placement = options.placement;
+                    }
                     if (_.isUndefined(options.section) === false) {
                         if (options.section === 'navigation') {
                             this.section = 'navigation';
@@ -88,6 +77,25 @@ define([
                 }
                 this.renderData(callback);
                 return this;
+            },
+
+            /**
+             * generate a bit.ly short url to shrink share url
+             */
+            shrinkUrl: function () {
+                var that = this;
+
+                this.ajax({
+                    module:   'aa_app_mod_share',
+                    action:   'getShorturl',
+                    obj_data: {
+                        url: this.shareInfos.get('url')
+                    }
+                }, false, function (resp) {
+                    that.shareInfos.set('short_url', resp.data.message);
+                    //_.debug.log(that.shareInfos.get('url'));
+                    //_.debug.log(that.shareInfos.get('short_url'));
+                });
             },
 
             renderData: function (callback) {
@@ -157,13 +165,13 @@ define([
                             }
                         }
                     });
-                    var facebook = Facebook().init();
+                    var facebook = Facebook().init({init: true});
                     facebook.model_share.set({
-                        link:        that.share_infos.url,
-                        picture:     that.share_infos.image,
-                        name:        that.share_infos.title,      // title
-                        caption:     '',                          // subtitle
-                        description: that.share_infos.desc        // message
+                        link:        that.shareInfos.get('url'),
+                        picture:     that.shareInfos.get('image'),
+                        name:        that.shareInfos.get('title'), // title
+                        caption:     '',                           // subtitle
+                        description: that.shareInfos.get('desc')   // message
                     });
                     facebook.libInit().share();
                 });
@@ -184,7 +192,7 @@ define([
                             }
                         }
                     });
-                    Google().init().share($(elem.currentTarget), that.share_infos);
+                    Google().init({init: true}).share($(elem.currentTarget), that.shareInfos.attributes);
                 });
             },
 
@@ -203,11 +211,11 @@ define([
                             }
                         }
                     });
-                    Twitter().init().share($(elem.currentTarget), that.share_infos);
+                    Twitter().init({init: true}).share($(elem.currentTarget), that.shareInfos.attributes);
                 });
             }
         });
 
         return View;
-    }
+    };
 });

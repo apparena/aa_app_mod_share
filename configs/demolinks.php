@@ -1,1 +1,1 @@
-<a href="#page/share/demo" class="btn btn-default">Sharebutton Demo</a>
+<a href="#mod/share/demo" class="btn btn-default">Sharebutton Demo</a>
